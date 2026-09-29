@@ -144,4 +144,4 @@ void liberarMemoria()
     inicio = nullptr;
     fin = nullptr;
     std::cout << "Memoria liberada. Hasta luego!\n";
-}
+} 
