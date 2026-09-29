@@ -1,29 +1,13 @@
 #include <iostream>
 #include <string>
 
-struct Datos
-{
-    int carne;
-    std::string nombre;
-    std::string carrera;
-};
-
-struct Nodo
-{
-    Datos datos;
-    Nodo* siguiente;
-    Nodo* anterior;
-};
-
-Nodo *inicio = nullptr;
-Nodo *fin = nullptr;
 
 Datos PedirDatos();
 void MostrarDatos();
 void AgregarDatos(Datos datos);
 void liberarMemoria();
 
-int main ()
+struct Datos
 {
     int opcion;
 
