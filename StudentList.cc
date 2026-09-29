@@ -27,11 +27,11 @@ void eliminarCancion(Datos datos)
 
             delete actual;
 
-            std::cout << "Cancion eliminada exitosamente!\n";
+            std::cout << "Datos eliminados exitosamente!\n";
             return;
         }
         actual = actual->siguiente;
     }
 
-    std::cout<< "Cancion no encontrada.\n";
+    std::cout<< "Datos no encontrados.\n";
 }
