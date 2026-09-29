@@ -22,6 +22,7 @@ Datos PedirDatos();
 void MostrarDatos();
 void AgregarDatos(Datos datos);
 void liberarMemoria();
+void eliminarDatos();
 
 int main ()
 {
@@ -32,8 +33,9 @@ int main ()
         std::cout << "\n -----CENTRO DE DATOS DE ESTUDIANTES---- \n";
         std::cout << "1. Agregar nuevos datos \n";
         std::cout << "2. Mostrar datos (inicio -> fin) \n";
+        std::cout << "3. Eliminar datos del ultimo estudiante \n";
         std::cout << "0. Salir \n";
-        std::cout << "Ingrese una opcion";
+        std::cout << "Ingrese una opcion: ";
         std::cin >> opcion;
         std::cin.ignore();
     
@@ -48,6 +50,9 @@ int main ()
             break;
             case 2:
             MostrarDatos();
+            break;
+            case 3:
+            eliminarDatos();
             break;
             case 0:
             std::cout << "Saliendo del programa... \n";
@@ -130,42 +135,29 @@ void MostrarDatos()
         posicion++;
     }
 }
-void eliminarCancion(Datos datos)
+void eliminarDatos()
 {
-    if ( inicio== nullptr)
+    if (fin == nullptr)
     {
-        std::cout << "La playlist esta vacia. No hay nada que eliminar.\n";
+        std::cout << "La lista esta vacia. No hay nada que eliminar.\n";
         return;
     }
 
-    Nodo *actual = inicio;
+    Nodo *temporal = fin;   // guardamos el nodo a borrar
 
-    while (actual != nullptr)
+    if (inicio == fin)  // solo hay un nodo
     {
-        if (actual->datos.t == datos.carne)
-        {
-            // Caso 1: Un solo nodo
-            if (actual == inicio && actual == fin)
-            {
-                inicio = nullptr;
-                fin = nullptr;
-            }
-            // Caso 3: Nodo al final
-            else if (actual == fin)
-            {
-                fin = fin->anterior;
-                fin->siguiente = nullptr;
-            }
-
-            delete actual;
-
-            std::cout << "Datos eliminados exitosamente!\n";
-            return;
-        }
-        actual = actual->siguiente;
+        inicio = nullptr;
+        fin = nullptr;
+    }
+    else                // hay dos o mas nodos
+    {
+        fin = fin->anterior;    // fin retrocede un nodo
+        fin->siguiente = nullptr; // el nuevo ultimo ya no apunta a nada
     }
 
-    std::cout<< "Datos no encontrados.\n";
+    delete temporal;        // liberamos el nodo viejo
+    std::cout << "Ultimo dato eliminado exitosamente!\n";
 }
 void liberarMemoria()
 {
