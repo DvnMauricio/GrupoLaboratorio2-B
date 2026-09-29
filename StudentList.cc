@@ -143,20 +143,20 @@ void eliminarDatos()
         return;
     }
 
-    Nodo *temporal = fin;   // guardamos el nodo a borrar
+    Nodo *temporal = fin;
 
-    if (inicio == fin)  // solo hay un nodo
+    if (inicio == fin) 
     {
         inicio = nullptr;
         fin = nullptr;
     }
-    else                // hay dos o mas nodos
+    else                
     {
-        fin = fin->anterior;    // fin retrocede un nodo
-        fin->siguiente = nullptr; // el nuevo ultimo ya no apunta a nada
+        fin = fin->anterior;    
+        fin->siguiente = nullptr; 
     }
 
-    delete temporal;        // liberamos el nodo viejo
+    delete temporal;       
     std::cout << "Ultimo dato eliminado exitosamente!\n";
 }
 void liberarMemoria()
